@@ -8,8 +8,29 @@
 #ifndef UTILITY_H_
 #define UTILITY_H_
 
+#define BUFFER_LEN 512 
+
 // Include your relevant functions declarations here they must start with the
 // extern keyword such as in the following example:
 // extern void display_help(void);
+
+// string tokenizer functions
+extern int string_tokenizer(char* str, char tokens[][BUFFER_LEN]);
+
+// returns current directory
+extern void get_currentDir(char* pwd);
+
+// changes the directory
+extern void change_dir(char* pwd, char* path);
+
+// clears the screen
+extern void clear_screen(void);
+
+// pauses the shell
+extern void pause_shell(void);
+
+//displays the directory
+extern void display_dir(char* path);
+
 
 #endif /* UTILITY_H_ */

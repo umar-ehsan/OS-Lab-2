@@ -15,7 +15,8 @@
 #include "myshell.h"
 
 // Put macros or constants here using #define
-#define BUFFER_LEN 256
+#define BUFFER_LEN 512
+#define MAX_TOKENS 10
 
 // Put global environment variables here
 
@@ -24,13 +25,20 @@
 int main(int argc, char *argv[])
 {
     // Input buffer and and commands
+	char pwd[BUFFER_LEN] = {0};
     char buffer[BUFFER_LEN] = {0};
     char command[BUFFER_LEN] = {0};
-    char arg[BUFFER_LEN] = {0};
+    char tokens[MAX_TOKENS][BUFFER_LEN] = {0};
+	int token_count = 0;
 
     // Parse the commands provided using argc and argv
-    printf("$> ");
+    
     // Perform an infinite loop getting command input from users
+	
+	printf("\n-------------------------------------------------------\n");
+	printf("\nWelcome to the shell!, type help to discover more commands\n\n");
+	get_currentDir(pwd);
+	printf("%s> ", pwd);
     while (fgets(buffer, BUFFER_LEN, stdin) != NULL){
         // Perform string tokenization to get the command and argument
 	    int index = 0;
@@ -38,56 +46,67 @@ int main(int argc, char *argv[])
 			index++;
 		}
 		buffer[index] = '\0';
-		int length = strlen(buffer);
-		int i = 0;
-		int commandLength;
-		while (buffer[i] != ' ' && i < length){
-			if (buffer[i] != '\n')
-				command[i] = buffer[i];
-			i++;
-		}
-		commandLength = i;
-		command[i++] = '\0';
-
-		while (i < length){
-			if (buffer[i] != '\n')
-				arg[i - (commandLength + 1)] = buffer[i];
-			i++;
-		}
-		arg[i++] = '\0';
-
+		
+		token_count = string_tokenizer(buffer, tokens);
+		strcpy(command, tokens[0]);
         // Check the command and execute the operations for each command
         // cd command -- change the current directory
         if (strcmp(command, "cd") == 0){
             // your code here
+			change_dir(pwd, tokens[1]);
         }
 
         // other commands here...
+		
+		// clear screen
+		else if (strcmp(command, "clear") == 0){
+			clear_screen();
+		}
 
+		// display help
+		else if (strcmp(command, "help") == 0){
+			display_help();
+		}	
+		
+		// pause the shell
+		else if (strcmp(command, "pause") == 0){
+			pause_shell();
+		}	
+		
+		// lists the contents of the specified directory
+		else if (strcmp(command, "dir") == 0){
+			display_dir(tokens[1]);
+			printf("\n");
+		}
+		
 		// run the echo command
 		else if (strcmp(command, "echo") == 0){
-			printf("$> ");
-			for (int i = 0; i < strlen(arg); i++){
-				printf("%c", arg[i]);
+			printf("%s> ", pwd);
+			for (int i = 1; i < token_count; i++){
+				printf("%s ", tokens[i]);
 			}
 			printf("\n");
 		}
 
         // quit command -- exit the shell
-        else if (strcmp(command, "quit") == 0 || strcmp(command, "exit") == 0){
-            return 0;
+        else if (strcmp(tokens[0], "quit") == 0 || strcmp(tokens[0], "exit") == 0){
+            printf("Bye!\n");
+			return EXIT_SUCCESS;
         }
 
         // Unsupported command
         else{
-            fputs("$> Unsupported command, use help to display the manual\n", stderr);
+			printf("%s> ", pwd);
+            printf("Unsupported command, use help to display the manual\n");
         }
 		
 		memset(buffer, 0, sizeof buffer);
-		memset(command, 0, sizeof buffer);
-		memset(arg, 0, sizeof buffer);
+		memset(command, 0, sizeof command);
+		for (int i = 0; i < MAX_TOKENS; i++){
+			memset(tokens[i], 0, sizeof tokens[i]);
+		}
 		
-		printf("$> ");
+		printf("%s> ", pwd);
     }
     return EXIT_SUCCESS;
 }
