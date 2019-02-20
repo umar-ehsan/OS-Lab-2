@@ -48,10 +48,10 @@ For example: ./myshell commands.txt <br>
 The following are the commands for the shell: <br><br>
 
 help :  Lists the help menu <br>
-dir <directory>:  Lists the contents of the directory <br>
+dir "directory":  Lists the contents of the directory <br>
 environ: Lists all the environment strings <br>
-echo <comment>: Displays comment on the command line followed by a newline <br>
+echo "comment": Displays comment on the command line followed by a newline <br>
 clr. Clears the screen <br>
-cd <path>: Changes the working directory to the specified path. <br>
+cd "path": Changes the working directory to the specified path. <br>
 pause: Pauses operation of the shell until the ENTER key is hit <br>
 quit: Quits the shell <br>
