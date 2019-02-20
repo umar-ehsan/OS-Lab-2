@@ -11,10 +11,7 @@
 #include <dirent.h>
 #include <sys/types.h>
 #include <string.h>
-#include "utility.h"
-
-#define BUFFER_LEN 512 
-#define SCREEN_HEIGHT 80
+#include "utility.h" 
 
 // Define your utility functions here, these will most likely be functions that you call
 // in your myshell.c source file
@@ -64,21 +61,21 @@ extern void pause_shell(void){
 	}
 }
 
-//displays help menu
+// displays help menu
 extern void display_help(void){
     printf("\nList of available commands:\n\n");
-    printf("help. Lists the help menu.\n");
-    printf("dir <directory>. Lists the contents of the directory\n");
-    printf("environ. Lists all the environment strings..\n");
-    printf("echo <comment>. Displays comment on the command line followed by a newline.\n");
-	printf("cd <path>. Changes the working directory to the specified path.\n");
-    printf("clr Clears the screen.\n");
-    printf("pause Pauses operation of the shell until the ENTER key is hit.\n");
-    printf("quit Quits the shell.\n\n\n");
+    printf("help\t\t\t Lists the help menu.\n");
+    printf("dir <directory>\t\t Lists the contents of the directory\n");
+    printf("environ\t\t\t Lists all the environment strings..\n");
+    printf("echo <comment>\t\t Displays comment on the command line followed by a newline.\n");
+	printf("cd <path>\t\t Changes the working directory to the specified path.\n");
+    printf("clr\t\t\t Clears the screen.\n");
+    printf("pause\t\t\t Pauses operation of the shell until the ENTER key is hit.\n");
+    printf("quit\t\t\t Quits the shell.\n\n\n");
     
 }
 
-//displays the directory
+// displays the directory
 extern void display_dir(char* path){
 	struct dirent *de; 
 	DIR *dr = NULL;
@@ -95,4 +92,9 @@ extern void display_dir(char* path){
 		printf("%s\n", de->d_name); 
 	}
     closedir(dr);     
+}
+
+// displays the environment variables
+extern void display_environs(char env[][BUFFER_LEN]){
+	printf("%s\n%s\n", env[0], env[1]);
 }
