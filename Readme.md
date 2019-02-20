@@ -1,32 +1,32 @@
 Lab 2 Shell Project
 
-Group Members:
+Group Members: <br>
 
-Umar Ehsan
-100634240
+Umar Ehsan <br>
+100634240<br><br>
 
-Diba Shojaeigoradel
-100621768
+Diba Shojaeigoradel<br>
+100621768<br><br>
 
-Yin Zhou
-100314426
+Yin Zhou<br>
+100314426<br><br>
 
-Thomas Jansz
-100642111
+Thomas Jansz<br>
+100642111<br><br>
 
-Objectives:
-Learn to work in groups to develop software using Git
+Objectives:<br>
+Learn to work in groups to develop software using Git<br><br>
 
-Gain experience developing multi-source file projects in C
+Gain experience developing multi-source file projects in C<br><br>
 
-Experience using Makefiles and other software build tools
+Experience using Makefiles and other software build tools<br><br><br>
 
 
-Description:
+Description:<br>
 Design a simple command line shell and implement it on the specified UNIX platform
 The Shell or Command Line Interpreter is the fundamental User interface to
 an Operating System. The lab project is to write a simple shell - myshell -
-that has the following functions:
+that has the following functions:<br><br>
 
 cd - change working directory
 clr - clear the screen
@@ -35,7 +35,7 @@ environ - list all the environment string
 echo - display the diaply followed by a new line
 help - display the user manual using the more filter
 pause - pause operation of the shell
-quit - quit the shell
+quit - quit the shell<br><br>
 
 
 
