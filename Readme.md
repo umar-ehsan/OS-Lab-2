@@ -3,16 +3,20 @@ Lab 2 Shell Project
 Group Members: <br>
 
 Umar Ehsan <br>
-100634240<br><br>
+100634240<br>
+Added the utiliy functions for directory listing and change <br>
 
 Diba Shojaeigoradel<br>
-100621768<br><br>
+100621768<br>
+Added the utility functions for clearing screen, listing environment variables <br>
 
 Yin Zhou<br>
-100314426<br><br>
+100314426<br>
+Added the myshell functionality for tokenizer and various commands<br>
 
 Thomas Jansz<br>
-100642111<br><br>
+100642111<br>
+Finished the overall structure by adding the command line batch argument, and added help menu<br>
 
 Objectives:<br><br>
 Learn to work in groups to develop software using Git<br><br>
