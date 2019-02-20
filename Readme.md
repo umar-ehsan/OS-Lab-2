@@ -39,5 +39,8 @@ quit - quit the shell<br><br>
 
 
 
-Usage:
+Usage:<br>
+The shell can be invoked on Windows command line interpreter by typing myshell. It can be invoked on a UNIX based OS<br>
+by typing /myshell. The program accepts one argument which can be a batchfile containing user commands. <br>
+For example: ./myshell commands.txt
 
